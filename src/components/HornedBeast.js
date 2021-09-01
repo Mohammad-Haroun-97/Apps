@@ -17,13 +17,15 @@ class HornedBeast extends React.Component {
     });
   };
 
+  
+
   render() {
     return (
       <>
         <Card style={{ width: "18rem" }}>
           <Card.Img variant="top" src={this.props.imgUrl}  alt="HornedBeast"
           title={this.props.title}
-          onClick={this.incrementNumberOfVotes} />
+          />
           <Card.Body>
             <Card.Title>{this.props.title}</Card.Title>
             <Card.Text>
@@ -34,7 +36,7 @@ class HornedBeast extends React.Component {
           <li>{this.props.horns}</li>
         </ul>
             </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
+            <Button variant="primary"  onClick={this.incrementNumberOfVotes} >select</Button>
           </Card.Body>
         </Card>
 
