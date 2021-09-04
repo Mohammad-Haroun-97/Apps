@@ -1,43 +1,45 @@
-import React from 'react';
-import {Modal ,Button } from 'react-bootstrap';
-import HornedBeast from '../components/HornedBeast';
-import data from '../data.json'; 
- 
+import React from "react";
+import  Modal  from "react-bootstrap/Modal";
+import Button from "@restart/ui/esm/Button";
 
 
-
- class SelectedBeats extends React.Component{
+class SelectedBeast extends React.Component{
 
     render(){
-        return (
+
+        return(
+
             <>
-           
-              
-        
             <Modal
-                show={this.props.state}
-                onHide={this.props.hideFun}
-                dialogClassName="modal-90w"
-                aria-labelledby="example-custom-modal-styling-title"
-              >
-                <Modal.Header closeButton >
-                  <Modal.Title id="example-custom-modal-styling-title">
-                    
-                  </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-              <HornedBeast/>
-                 
-                 <Modal.Footer>
-            <Button onClick={this.props.hideFun}>Close</Button>
-          </Modal.Footer>
-                </Modal.Body>
-              </Modal>
+             show={this.props.state.show} onHide={this.props.hideFun}>
+        <Modal.Header closeButton>
+          <Modal.Title>{this.props.title}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body> <img style={{width :'30rem'}} src={this.props.image_url} ></img>
+        <p>{this.props.description}</p>
+        <ul>
+            <li>Number of horns : {this.props.horns}</li>
+            <li>Number of Votes : {this.props.votes}</li>
+        </ul>
+        
+        
+         </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={this.props.hideFun}>
+            Close
+          </Button>
+          
+        </Modal.Footer>
+      </Modal>
+
+
+
+
             </>
-          );
-      }  
+        )
+    }
+}
 
- }
-  
 
-export default SelectedBeats;
+
+export default SelectedBeast

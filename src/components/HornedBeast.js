@@ -1,53 +1,51 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
 class HornedBeast extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      numberOfVotes: 0,
+      votes: 0,
     };
   }
 
-  incrementNumberOfVotes = () => {
-    this.setState({
-      numberOfVotes: this.state.numberOfVotes + 1,
-    });
+  votesFunction = () => {
+    this.setState({ votes: this.state.votes + 1 });
+
+    this.props.showFun()
+    this.props.update(this.props.title, this.props.image_url,this.props.description )
+
+
   };
 
-  
-
   render() {
+
     return (
       <>
         <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src={this.props.imgUrl}  alt="HornedBeast"
-          title={this.props.title}
-          />
+          <Card.Img variant="top" src={this.props.image_url} onClick={this.votesFunction}  />
           <Card.Body>
             <Card.Title>{this.props.title}</Card.Title>
             <Card.Text>
             {this.props.description}
-            <ul>
-          <li>Number of Votes : {this.state.numberOfVotes}</li>
-          <li>{this.props.keyword}</li>
-          <li>{this.props.horns}</li>
-        </ul>
+            
             </Card.Text>
-            <Button variant="primary"  onClick={this.incrementNumberOfVotes} >select</Button>
+            <Card.Text>
+            Number of Votes : {this.state.votes}
+            </Card.Text>
+            <Card.Text>
+            Number of Horns : {this.props.horns}
+            </Card.Text>
+            <Button variant="primary" >Select</Button>
           </Card.Body>
         </Card>
 
-       
+        
       </>
     );
   }
 }
 
-export default HornedBeast;   
-
-  
-///////////////////
+export default HornedBeast;
